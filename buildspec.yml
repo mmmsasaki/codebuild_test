@@ -20,6 +20,13 @@ phases:
     commands:
       - env |sort
       - git --version
+      - |
+          if [ `git rev-parse --abbrev-ref HEAD` = 'master' ]; then
+            echo 'master branch'
+          else
+            echo 'not master'
+          fi
+
   #post_build:
     #commands:
       # - command
