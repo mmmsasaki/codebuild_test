@@ -32,7 +32,7 @@ phases:
           elif [[ $CODEBUILD_INITIATOR = *"test"* ]]; then
             echo 'CODEBUILD_INITIATOR contains "test"'
           fi
-      - ./checkbranch.sh
+      - bash -x checkbranch.sh
   #post_build:
     #commands:
       # - command
