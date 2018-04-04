@@ -21,8 +21,9 @@ phases:
       - env |sort
       - git --version
       - |
-          if [ `git rev-parse --abbrev-ref HEAD` = 'master' ]; then
-            echo 'master branch'
+          #!/bin/bash
+          if [ `git rev-parse --abbrev-ref HEAD` = 'master' ] || [[ $CODEBUILD_INITIATOR = *"test"* ]]; then
+            echo 'master branch or CODEBUILD_INITIATOR contains "test"'
           else
             echo 'not master'
           fi
