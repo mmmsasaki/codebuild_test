@@ -30,7 +30,7 @@ phases:
               echo 'not master'
             fi
           elif [[ $CODEBUILD_INITIATOR = *"test"* ]]; then
-            echo 'CODEBUILD_INITIATOR contains "test"'
+            echo 'CODEBUILD_INITIATOR contains "test"!'
           fi
       - bash -x checkbranch.sh
   #post_build:
