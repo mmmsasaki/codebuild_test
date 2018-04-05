@@ -21,7 +21,6 @@ phases:
       - env |sort
       - git --version
       - |
-          #!/bin/bash
           if [ -d .git ]; then
             BRANCH=`git rev-parse --abbrev-ref HEAD`
             if [ $BRANCH = 'master' ]; then
@@ -31,14 +30,12 @@ phases:
             fi
           else
             echo 'No .git directory found.'
+            case "$CODEBUILD_INITIATOR" in
+            *test*) echo 'master branch or CODEBUILD_INITIATOR contains "test"';;
+            *     ) echo 'no "test" found in CODEBUILD_INITIATOR';;
+            esac
           fi
       - bash -x checkbranch.sh
-      - |
-          #!/bin/bash
-          case "$CODEBUILD_INITIATOR" in
-          *test*) echo 'master branch or CODEBUILD_INITIATOR contains "test"';;
-          *     ) echo 'no "test" found in CODEBUILD_INITIATOR';;
-          esac
   #post_build:
     #commands:
       # - command
