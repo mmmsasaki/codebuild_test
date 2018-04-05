@@ -29,10 +29,16 @@ phases:
             else
               echo 'not master'
             fi
-          elif [[ $CODEBUILD_INITIATOR = *"test"* ]]; then
-            echo 'CODEBUILD_INITIATOR contains "test"!'
+          else
+            echo 'No .git directory found.'
           fi
       - bash -x checkbranch.sh
+      - |
+          #!/bin/bash
+          case "$CODEBUILD_INITIATOR" in
+          *test*) echo 'master branch or CODEBUILD_INITIATOR contains "test"';;
+          *     ) echo 'no "test" found in CODEBUILD_INITIATOR';;
+          esac
   #post_build:
     #commands:
       # - command
