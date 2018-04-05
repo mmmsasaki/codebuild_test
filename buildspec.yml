@@ -28,23 +28,23 @@ phases:
           if [ -d .git ]; then
             BRANCH=`git rev-parse --abbrev-ref HEAD`
             if [ ${BRANCH} = 'test' ]; then
-              aws s3 cp dist/ s3://test-shl-wrtc-service/ --recursive
+              echo "test branch"
             elif [ ${BRANCH} = 'develop' ]; then
-              aws s3 cp dist/ s3://shl-wrtc-service/ --recursive
+              echo "develop branch"
             elif [ ${BRANCH} = 'staging' ]; then
-              aws s3 cp dist/ s3://stg-shl-wrtc-service/ --recursive
+              echo "staging branch"
             elif [ ${BRANCH} = 'master' ]; then
-              aws s3 cp dist/ s3://prd-shl-wrtc-service/ --recursive
+              echo "master branch"
             else
               echo 'did not match any deployment branches'
             fi
           else
             echo 'No .git directory found.'
             case "${CODEBUILD_INITIATOR}" in
-            *test*) aws s3 cp dist/ s3://test-shl-wrtc-service/ --recursive;;
-            *develop*) aws s3 cp dist/ s3://shl-wrtc-service/ --recursive;;
-            *staging*) aws s3 cp dist/ s3://stg-shl-wrtc-service/ --recursive;;
-            *master*) aws s3 cp dist/ s3://prd-shl-wrtc-service/ --recursive;;
+            *test*) echo "CODEBUILD_INITIATOR: test";;
+            *develop*) echo "CODEBUILD_INITIATOR: develop";;
+            *staging*) echo "CODEBUILD_INITIATOR: staging";;
+            *master*) echo "CODEBUILD_INITIATOR: master";;
             *     ) echo 'did not match any deployment branches';;
             esac
           fi
