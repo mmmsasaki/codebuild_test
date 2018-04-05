@@ -48,6 +48,7 @@ phases:
             *     ) echo 'did not match any deployment branches';;
             esac
           fi
+          echo "done"
     #commands:
       # - command
 #artifacts:
