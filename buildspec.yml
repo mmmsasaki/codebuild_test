@@ -43,6 +43,7 @@ phases:
             *master*) aws s3 cp dist/ s3://prd-shl-wrtc-service/ --recursive;;
             *     ) echo 'did not match any deployment branches';;
             esac
+          fi
     #commands:
       # - command
 #artifacts:
