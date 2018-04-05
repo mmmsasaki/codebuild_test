@@ -9,8 +9,12 @@ version: 0.2
      # key: "value"
 
 phases:
-  #install:
-    #commands:
+  install:
+    commands:
+      - apt-get update -y
+      - apt-get install -y python2.7-dev python-setuptools
+      - easy_install pip
+      - pip install awscli
       # - command
   #pre_build:
     #commands:
