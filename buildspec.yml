@@ -11,8 +11,9 @@ version: 0.2
 phases:
   install:
     commands:
+      - echo "ja_JP.UTF-8 UTF-8" > /etc/locale.gen
       - apt-get update -y
-      - apt-get install -y python2.7-dev python-setuptools
+      - apt-get install -y python2.7-dev python-setuptools locales
       - easy_install pip
       - pip install awscli
       # - command
