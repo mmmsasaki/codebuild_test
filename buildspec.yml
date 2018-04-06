@@ -42,8 +42,8 @@ phases:
             echo 'No .git directory found.'
             case "${CODEBUILD_INITIATOR}" in
             *test*) echo "CODEBUILD_INITIATOR: test";;
-            *develop*) echo "CODEBUILD_INITIATOR: develop";;
-            *staging*) echo "CODEBUILD_INITIATOR: staging";;
+            *dev*) echo "CODEBUILD_INITIATOR: develop";;
+            *stg*) echo "CODEBUILD_INITIATOR: staging";;
             *master*) echo "CODEBUILD_INITIATOR: master";;
             *     ) echo 'did not match any deployment branches';;
             esac
