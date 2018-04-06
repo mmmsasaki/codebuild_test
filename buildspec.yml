@@ -16,7 +16,6 @@ phases:
       - apt-get install -y python2.7-dev python-setuptools locales
       - easy_install pip
       - pip install awscli
-      # - command
   #pre_build:
     #commands:
       # - command
